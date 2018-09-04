@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- 连接相关的参数，主要用于数据库的连接 -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url"><![CDATA[jdbc:mysql://localhost:3306/big?useUnicode=true&characterEncoding=utf8]]></property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">123456</property>
+		<property name="javax.persistence.validation.mode">none</property>
+		<!-- hibernate自身相关的属性内容 -->
+		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property><!-- 
+			告知hibernate连接的是那种数据库，根据这种数据库的特点进行优化 -->
+		<property name="show_sql">true</property><!-- 是否运行的底层sql语句，显示在控制台当中 -->
+		<property name="format_sql">true</property><!-- 格式化显示sql，显示的更规范 -->
+		<property name="current_session_context_class">thread</property>
+		<!-- 映射文件的注册 -->
+		<mapping class="Entity.Book" />
+		<mapping class="Entity.Student" />
+		<mapping class="Entity.Form" />
+		<mapping class="Entity.Recept" />
+
+		<!-- <mapping resource="com/day1/person.hbm.xml"/> -->
+
+		<!-- 映射文件的注册列和表的对应，属性和列的对应必须以.hbml.xml文件结尾 放置位置随便 -->
+
+		<!-- hibernate的核心对象： 1.configuration对象，专门用于读取hibernate相关的配置文件的信息。 2.SessionFactory 
+			用于创建Session对象 3.Session对象，整个hibernate的核心，用于对数据的处理，进行CRUD操作。 session对象内部封装了Connection对象，一一对应的关系。 
+			4.Transaction事务，tx为缩写。 begin();开始 commit();提交 rollback();回滚 hibernate中增删改操作，必须手动控制事务。 
+			5.Quary用于在hibernate中进行复杂的查询操作。无主键的查询 session.get()查询方法以主键为条件的查询。 开发步骤O(对象)R(数据库)M(映射文件)。 
+			1.O实体对象。 2. -->
+
+	</session-factory>
+</hibernate-configuration>

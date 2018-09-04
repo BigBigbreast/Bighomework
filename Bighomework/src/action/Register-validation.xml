@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC  
+        "-//Apache Struts//XWork Validator 1.0.3//EN"  
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+
+	<field name="snumber">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>必须输入学号，且长度必须为11位</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="regex"><![CDATA[(\w{11,11})]]></param>
+			<message>长度必须为11位</message>
+		</field-validator>
+	</field>
+
+	<field name="spas">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>必须输入密码</message>
+		</field-validator>
+
+	</field>
+
+	<field name="spas1">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>必须输入密码</message>
+		</field-validator>
+
+	</field>
+
+	<field name="sname">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>姓名不能为空</message>
+		</field-validator>
+
+	</field>
+</validators>

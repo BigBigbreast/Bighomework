@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+body {
+	background-image: url(WebRoot/images/1.jpg);
+}
+
+#container {
+	z-index: 0;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 151px;
+	width: 400;
+	margin-left: -200px;
+	margin-top: -100px;
+}
+
+#title_img {
+	width: 417px;
+}
+
+#box {
+	position: absolute;
+	top: 65px;
+	left: 40px;
+	z-index: 1;
+	/* background-color: #FF0000;*/
+}
+
+#box div {
+	color: #FFFFFF;
+}
+
+#title {
+	position: absolute;
+}

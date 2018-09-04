@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- Struts2的配置文件，需要配置自己建造的Action类。 dtd：约束文件中的标签规格， -->
+<struts>
+
+
+
+
+	<package name="c40" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor name="admin" class="Intercepter.adminIntercepter"></interceptor>
+			<interceptor name="student" class="Intercepter.studentIntercepter"></interceptor>
+			<interceptor name="root" class="Intercepter.rootIntercepter"></interceptor>
+		</interceptors>
+
+		<!-- 显示所有图书信息的action -->
+		<action name="lookbooks" class="action.LookBookaction" method="lookbook">
+			<result name="success">/index.jsp</result>
+		</action>
+		<!-- 查询登录核实密码和学号，并返回主页面 -->
+		<action name="checklogin" class="action.Checklogin" method="checklogin">
+			<result name="success" type="chain">lookbooks</result>
+			<result name="input">/login.jsp</result>
+		</action>
+
+
+
+		<!-- 选择图书 -->
+		<action name="selectbook" class="action.Buybookaction" method="selectbook">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="student" />
+			<interceptor-ref name="defaultStack" />
+			<result name="sorry">/Sorry.jsp</result>
+			<result name="success">/Buybook.jsp</result>
+		</action>
+
+		<!-- 购买图书 -->
+		<action name="buybook" class="action.Buybookaction" method="buyselectbook">
+
+			<result name="success" type="chain">lookbooks</result>
+			<result name="input">/Buybook.jsp</result>
+		</action>
+
+
+		<!-- 搜索图书 -->
+		<action name="searchbooks" class="action.LookBookaction"
+			method="searchbooks">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="student" />
+			<interceptor-ref name="defaultStack" />
+			<result name="sorry">/Sorry.jsp</result>
+			<result name="success">/SearchBook.jsp</result>
+		</action>
+
+		<!-- 查看登录用户的订单 -->
+		<action name="userforms" class="action.Userformsaction" method="searchuserforms">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="student" />
+			<interceptor-ref name="defaultStack" />
+			<result name="sorry">/Sorry.jsp</result>
+			<result name="success">/Userforms.jsp</result>
+		</action>
+
+
+		<!-- 注册登录 -->
+		<action name="register" class="action.Register" method="doregister">
+			<result name="success">/index.jsp</result>
+			<result name="input">/Register.jsp</result>
+		</action>
+
+		<!-- 更新用户选择的订单 -->
+		<action name="updateform" class="action.Userformsaction"
+			method="updatelstatus">
+			<result name="success" type="chain">userforms</result>
+		</action>
+		<!-- 显示用户选择的订单信息 -->
+		<action name="userselectform" class="action.Userformsaction"
+			method="getselectform">
+			<result name="success">/getuserbook.jsp</result>
+		</action>
+
+
+		<!-- 显示所有用户订单 -->
+		<action name="showforms" class="action.Adminformaction" method="showusercheck">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="admin" />
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/Checkforms.jsp</result>
+			<result name="sorry">/Sorry.jsp</result>
+		</action>
+
+		<!-- 显示未审核的订单 -->
+		<action name="uncheckedforms" class="action.Adminformaction"
+			method="showuncheckedforms">
+			<result name="success">/Uncheckedforms.jsp</result>
+		</action>
+
+		<!-- 显示指定查询的订单 -->
+		<action name="snumberforms" class="action.Adminformaction"
+			method="showsnumberforms">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="admin" />
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/Searchuserform.jsp</result>
+			<result name="sorry">/Sorry.jsp</result>
+		</action>
+
+		<!-- 显示点击的订单信息 -->
+		<action name="updateselectform" class="action.Adminformaction"
+			method="shouforminfo">
+			<result name="success">/Showselectform.jsp</result>
+		</action>
+
+		<!-- 执行审核状态更新 -->
+		<action name="updateusercstatus" class="action.Updateuserform"
+			method="updateusercstatus">
+			<result name="success" type="chain">showforms</result>
+		</action>
+
+		<!-- 显示所有的发票 -->
+		<action name="showallrecepts" class="action.Updateuserform"
+			method="showallrecepts">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="admin" />
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/Showallrecepts.jsp</result>
+			<result name="sorry">/Sorry.jsp</result>
+		</action>
+
+		<!-- 显示选定的发票 -->
+		<action name="showselectreceptinfo" class="action.Updateuserform"
+			method="showselectreceptinfo">
+			<result name="success">/Showselectrecept.jsp</result>
+		</action>
+
+		<!-- 执行发票的状态更新 -->
+		<action name="updateselectrecept" class="action.Updateuserform"
+			method="updateuserrstatus">
+			<result name="success" type="chain">showallrecepts</result>
+		</action>
+
+		<!-- 显示所有的领书单信息 -->
+		<action name="showalllingforms" class="action.Updateuserform"
+			method="showalllingforms">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="admin" />
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/Showalllingforms.jsp</result>
+			<result name="sorry">/Sorry.jsp</result>
+		</action>
+
+		<!-- 显示选择购入的图书信息 -->
+		<action name="showselectedbook" class="action.Updateuserform"
+			method="showselectedbook">
+			<result name="success">/Addbook.jsp</result>
+		</action>
+
+		<!-- 显示所有的图书信息 -->
+		<action name="addbooks" class="action.Updateuserform" method="addbooks">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="root" />
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/Addbooks.jsp</result>
+			<result name="sorry">/Sorry.jsp</result>
+		</action>
+
+		<!-- 增加图书 -->
+		<action name="updatebookcount" class="action.Updateuserform"
+			method="updatebookcount">
+			<result name="success" type="chain">addbooks</result>
+		</action>
+
+		<!-- 购入新图书 -->
+		<action name="addnewbook" class="action.Addnewbookaction"
+			method="addbook">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="root" />
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/Addnewbook.jsp</result>
+			<result name="input">/Addnewbook.jsp</result>
+			<result name="sorry">/Sorry.jsp</result>
+		</action>
+
+		<!-- 图表显示信息 -->
+		<action name="showecharts" class="action.Updateuserform"
+			method="showecharts">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="root" />
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/echarts.jsp</result>
+			<result name="sorry">/Sorry.jsp</result>
+		</action>
+
+		<!-- 显示选择购入的图书信息 -->
+		<action name="showcharbook" class="action.Updateuserform"
+			method="showselectechart">
+			<result name="success">/Addbook.jsp</result>
+		</action>
+	</package>
+
+
+
+</struts>
