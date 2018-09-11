@@ -18,8 +18,18 @@ import Entity.Recept;
 import page.PageBeanform;
 
 public class FormServiceimpl implements FormService {
-	private static ApplicationContext aContext=new ClassPathXmlApplicationContext("/Service/applicationContext.xml");
-	private static FormDao dao=(FormDao) aContext.getBean("formdao");
+	//private static ApplicationContext aContext=new ClassPathXmlApplicationContext("/Service/applicationContext.xml");
+	private FormDao dao;
+	
+
+	public FormDao getDao() {
+		return dao;
+	}
+
+	public void setDao(FormDao dao) {
+		this.dao = dao;
+	}
+
 	@Override
 	public PageBeanform getuserforms(int sid,int page) {
 		// TODO Auto-generated method stub		

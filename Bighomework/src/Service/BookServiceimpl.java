@@ -18,8 +18,14 @@ import page.PageBean;
 import page.PageBeanform;
 
 public class BookServiceimpl implements BookService {
-	private static ApplicationContext aContext=new ClassPathXmlApplicationContext("/Service/applicationContext.xml");
-	private static BookDao dao=(BookDao) aContext.getBean("bookdao");
+	private BookDao dao;
+	public BookDao getDao() {
+		return dao;
+	}
+	public void setDao(BookDao dao) {
+		this.dao = dao;
+	}
+
 	@Override//获取所有图书，返回List集合
 	public PageBean getBooks(int page) {
 		PageBean pageBean=new PageBean();

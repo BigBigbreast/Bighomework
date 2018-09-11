@@ -23,8 +23,19 @@ import page.PageBeanform;
 public class Userformsaction {
 	private int page;
 	private String id;
-	private ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
-	private FormService formService=(FormService)aContext.getBean("updateuserform");
+	//private ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
+	private FormService formService;
+	
+	public FormService getFormService() {
+		return formService;
+	}
+
+
+	public void setFormService(FormService formService) {
+		this.formService = formService;
+	}
+
+
 	public String getId() {
 		return id;
 	}

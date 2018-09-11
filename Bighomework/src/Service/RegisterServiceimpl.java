@@ -11,14 +11,22 @@ import Entity.HibernateUtil;
 import Entity.Student;
 
 public class RegisterServiceimpl implements RegisterService {
+	private Register register;
+	
+	public Register getRegister() {
+		return register;
+	}
+
+	public void setRegister(Register register) {
+		this.register = register;
+	}
 
 	@Override
 	public void register(Student student) {
 		// TODO Auto-generated method stub
 		ApplicationContext aContext=new ClassPathXmlApplicationContext("/Service/applicationContext.xml");
-		Register r=(Register)aContext.getBean("registerdao");
 		Transaction tx=HibernateUtil.getCurrSession().beginTransaction();
-		r.register(student);
+		register.register(student);
 		tx.commit();
 	}
 

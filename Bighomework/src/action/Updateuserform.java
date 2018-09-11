@@ -31,9 +31,18 @@ public class Updateuserform {
 	private String r_status;
 	private String count;
 	private String bcid;
-	private ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
-	private FormService formService=(FormService)aContext.getBean("updateuserform");
-	private BookService bookService=(BookService)aContext.getBean("lookbook");
+	//private ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
+	private FormService formService;
+	private BookService bookService;
+	
+	public BookService getBookService() {
+		return bookService;
+	}
+
+	public void setBookService(BookService bookService) {
+		this.bookService = bookService;
+	}
+
 	public String getBcid() {
 		return bcid;
 	}

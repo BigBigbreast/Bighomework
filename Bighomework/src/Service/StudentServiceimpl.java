@@ -14,12 +14,20 @@ import Entity.HibernateUtil;
 import Entity.Student;
 
 public class StudentServiceimpl implements StudentService {
+	private StudentDao getstudent;
+	
+	public StudentDao getGetstudent() {
+		return getstudent;
+	}
+
+	public void setGetstudent(StudentDao getstudent) {
+		this.getstudent = getstudent;
+	}
 
 	@Override//获取所有的学生信息
 	public List<Student> getStudents() {
 		// TODO Auto-generated method stub
-		ApplicationContext aContext=new ClassPathXmlApplicationContext("/Service/applicationContext.xml");
-		StudentDao getstudent=(StudentDao)aContext.getBean("studentdao");
+		//ApplicationContext aContext=new ClassPathXmlApplicationContext("/Service/applicationContext.xml");
 		Transaction tx=HibernateUtil.getCurrSession().beginTransaction();
 		List<Student> students=getstudent.getStudents();	
 		return students;

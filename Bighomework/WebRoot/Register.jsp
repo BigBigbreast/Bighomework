@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
-	<!-- GIMS：Graduate Information Management System 教材预订管理系统 -->
+	<!--  教材预订管理系统 -->
 	<div align="left">
 		<h2 class="sub-header" style="padding-left: 30px">用户注册</h2>
 	</div>
@@ -52,21 +52,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<br> <font size="3px" style="margin-right:50px; color:#999999;">您的学号:</font><input
 				type="text"
 				style="margin-right: 70px;margin-bottom:20px; font-size:15px; color: #999999"
-				name="snumber"><br> <font size="3px"
+				name="snumber"><br>
+				 <font size="3px"
 				style="margin-right:50px; color:#999999;">密码:</font><input
 				type="password"
 				style="margin-right: 100px;margin-bottom:20px; font-size:15px; color: #999999"
-				name="spas"><br> <font size="3px"
+				name="spas"><br> 
+				<font size="3px"
 				style="margin-right:50px; color:#999999;">请再次输入密码:</font><input
 				type="password"
 				style="margin-right: 25px;margin-bottom:20px; font-size:15px; color: #999999"
-				name="spas1"><br> <font size="3px"
+				name="spas1"><br> 
+				<font size="3px"
 				style="margin-right:50px; color:#999999;">姓名:</font><input
 				type="text"
 				style="margin-right: 100px;margin-bottom:20px; font-size:15px; color: #999999"
-				name="sname"><br> <br> <input type="submit"
+				name="sname"><br> <br> 
+				<input type="submit"
 				style="margin-right: 100px;margin-bottom:20px; font-size:15px; color: #999999"
-				value="提交"><br> <input type="reset"
+				value="提交"><br>
+				 <input type="reset"
 				style="margin-right: 100px;margin-bottom:20px; font-size:15px; color: #999999"
 				value="重置"><br>
 

@@ -15,6 +15,14 @@ import Service.StudentServiceimpl;
 public class Checklogin {
 	private String username;
 	private String userpass;
+	private StudentService studentService;
+	
+	public StudentService getStudentService() {
+		return studentService;
+	}
+	public void setStudentService(StudentService studentService) {
+		this.studentService = studentService;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -30,8 +38,8 @@ public class Checklogin {
 	
 	public String checklogin(){
 		ValueStack valueStack=ActionContext.getContext().getValueStack();
-		ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
-		StudentService studentService=(StudentService)aContext.getBean("register");
+		//ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
+		//StudentService studentService=(StudentService)aContext.getBean("register");
 		List<Student> students=studentService.getStudents();
 		for (Student student : students) {
 			if (username.equals(student.getSnumber())&&userpass.equals(student.getSpass())){

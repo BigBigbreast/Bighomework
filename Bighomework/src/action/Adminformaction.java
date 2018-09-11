@@ -18,11 +18,18 @@ import Service.FormServiceimpl;
 import page.PageBeanform;
 
 public class Adminformaction {
-	private ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
-	private FormService formService=(FormService)aContext.getBean("adminform");
+	//private ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
+	private FormService formService;
 	private int page;
 	private String id;
 	private String snumber;
+	
+	public FormService getFormService() {
+		return formService;
+	}
+	public void setFormService(FormService formService) {
+		this.formService = formService;
+	}
 	public String getSnumber() {
 		return snumber;
 	}

@@ -24,7 +24,16 @@ public class Buybookaction extends ActionSupport{
 	
 	ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
 	
-	private BookService bookService=(BookService)aContext.getBean("buybook");
+	private BookService bookService;
+	
+	public BookService getBookService() {
+		return bookService;
+	}
+
+	public void setBookService(BookService bookService) {
+		this.bookService = bookService;
+	}
+
 	public String getBuybookcount() {
 		return buybookcount;
 	}

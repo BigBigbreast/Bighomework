@@ -19,8 +19,24 @@ public class Register extends ActionSupport{
 	/**
 	 * 
 	 */
-	private ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
+	//private ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
 	private static final long serialVersionUID = 1L;
+	private RegisterService registerService;
+	private StudentService studentService;
+	
+	public StudentService getStudentService() {
+		return studentService;
+	}
+	public void setStudentService(StudentService studentService) {
+		this.studentService = studentService;
+	}
+	public RegisterService getRegisterService() {
+		return registerService;
+	}
+	public void setRegisterService(RegisterService registerService) {
+		this.registerService = registerService;
+	}
+
 	private String snumber;
 	private String spas;
 	private String spas1;
@@ -51,7 +67,7 @@ public class Register extends ActionSupport{
 	}
 	
 	public String doregister(){
-		RegisterService registerService=(RegisterService)aContext.getBean("register2");
+		//RegisterService registerService=(RegisterService)aContext.getBean("register2");
 		Student student=new Student();
 		student.setSname(sname);
 		student.setSnumber(snumber);
@@ -64,7 +80,7 @@ public class Register extends ActionSupport{
 
 	public void validateDoregister(){
 		ValueStack valueStack=ActionContext.getContext().getValueStack();
-		StudentService studentService=(StudentService)aContext.getBean("register");
+		//StudentService studentService=(StudentService)aContext.getBean("register");
 		List<Student> students=studentService.getStudents();
 		for (Student student : students) {
 			if (this.snumber.equals(student.getSnumber())){

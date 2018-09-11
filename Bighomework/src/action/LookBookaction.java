@@ -21,10 +21,19 @@ import page.PageBeanform;
 public class LookBookaction {
 	private int page;
 	private String keywords;
-	private ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
+	//private ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
 	
-	private BookService bookService=(BookService)aContext.getBean("lookbook");
+	private BookService bookService;
 			
+	
+	public BookService getBookService() {
+		return bookService;
+	}
+
+	public void setBookService(BookService bookService) {
+		this.bookService = bookService;
+	}
+
 	public int getPage() {
 		return page;
 	}
