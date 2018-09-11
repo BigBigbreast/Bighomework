@@ -28,14 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="../css/dashboard.css" rel="stylesheet">
 <style>
 <%@
-include
-
- 
-
-file="../css/index.css"
-
- 
-
+include file="../css/index.css"
 %>
 </style>
 <!-- 导入js文件 -->
