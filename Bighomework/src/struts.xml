@@ -16,11 +16,11 @@
 		</interceptors>
 
 		<!-- 显示所有图书信息的action -->
-		<action name="lookbooks" class="action.LookBookaction" method="lookbook">
+		<action name="lookbooks" class="lookbookaction" method="lookbook">
 			<result name="success">/index.jsp</result>
 		</action>
 		<!-- 查询登录核实密码和学号，并返回主页面 -->
-		<action name="checklogin" class="action.Checklogin" method="checklogin">
+		<action name="checklogin" class="checklogin" method="checklogin">
 			<result name="success" type="chain">lookbooks</result>
 			<result name="input">/login.jsp</result>
 		</action>
@@ -28,7 +28,7 @@
 
 
 		<!-- 选择图书 -->
-		<action name="selectbook" class="action.Buybookaction" method="selectbook">
+		<action name="selectbook" class="buybookaction" method="selectbook">
 			<interceptor-ref name="params" />
 			<interceptor-ref name="student" />
 			<interceptor-ref name="defaultStack" />
@@ -37,7 +37,7 @@
 		</action>
 
 		<!-- 购买图书 -->
-		<action name="buybook" class="action.Buybookaction" method="buyselectbook">
+		<action name="buybook" class="buybookaction" method="buyselectbook">
 
 			<result name="success" type="chain">lookbooks</result>
 			<result name="input">/Buybook.jsp</result>
@@ -45,7 +45,7 @@
 
 
 		<!-- 搜索图书 -->
-		<action name="searchbooks" class="action.LookBookaction"
+		<action name="searchbooks" class="lookbookaction"
 			method="searchbooks">
 			<interceptor-ref name="params" />
 			<interceptor-ref name="student" />
@@ -55,7 +55,7 @@
 		</action>
 
 		<!-- 查看登录用户的订单 -->
-		<action name="userforms" class="action.Userformsaction" method="searchuserforms">
+		<action name="userforms" class="userformaction" method="searchuserforms">
 			<interceptor-ref name="params" />
 			<interceptor-ref name="student" />
 			<interceptor-ref name="defaultStack" />
@@ -65,25 +65,25 @@
 
 
 		<!-- 注册登录 -->
-		<action name="register" class="action.Register" method="doregister">
+		<action name="register" class="registeraction" method="doregister">
 			<result name="success">/index.jsp</result>
 			<result name="input">/Register.jsp</result>
 		</action>
 
 		<!-- 更新用户选择的订单 -->
-		<action name="updateform" class="action.Userformsaction"
+		<action name="updateform" class="userformaction"
 			method="updatelstatus">
 			<result name="success" type="chain">userforms</result>
 		</action>
 		<!-- 显示用户选择的订单信息 -->
-		<action name="userselectform" class="action.Userformsaction"
+		<action name="userselectform" class="userformaction"
 			method="getselectform">
 			<result name="success">/getuserbook.jsp</result>
 		</action>
 
 
 		<!-- 显示所有用户订单 -->
-		<action name="showforms" class="action.Adminformaction" method="showusercheck">
+		<action name="showforms" class="adminnformaction" method="showusercheck">
 			<interceptor-ref name="params" />
 			<interceptor-ref name="admin" />
 			<interceptor-ref name="defaultStack" />
@@ -92,13 +92,13 @@
 		</action>
 
 		<!-- 显示未审核的订单 -->
-		<action name="uncheckedforms" class="action.Adminformaction"
+		<action name="uncheckedforms" class="adminnformaction"
 			method="showuncheckedforms">
 			<result name="success">/Uncheckedforms.jsp</result>
 		</action>
 
 		<!-- 显示指定查询的订单 -->
-		<action name="snumberforms" class="action.Adminformaction"
+		<action name="snumberforms" class="adminnformaction"
 			method="showsnumberforms">
 			<interceptor-ref name="params" />
 			<interceptor-ref name="admin" />
@@ -108,19 +108,19 @@
 		</action>
 
 		<!-- 显示点击的订单信息 -->
-		<action name="updateselectform" class="action.Adminformaction"
+		<action name="updateselectform" class="adminnformaction"
 			method="shouforminfo">
 			<result name="success">/Showselectform.jsp</result>
 		</action>
 
 		<!-- 执行审核状态更新 -->
-		<action name="updateusercstatus" class="action.Updateuserform"
+		<action name="updateusercstatus" class="updateuserform"
 			method="updateusercstatus">
 			<result name="success" type="chain">showforms</result>
 		</action>
 
 		<!-- 显示所有的发票 -->
-		<action name="showallrecepts" class="action.Updateuserform"
+		<action name="showallrecepts" class="updateuserform"
 			method="showallrecepts">
 			<interceptor-ref name="params" />
 			<interceptor-ref name="admin" />
@@ -130,19 +130,19 @@
 		</action>
 
 		<!-- 显示选定的发票 -->
-		<action name="showselectreceptinfo" class="action.Updateuserform"
+		<action name="showselectreceptinfo" class="updateuserform"
 			method="showselectreceptinfo">
 			<result name="success">/Showselectrecept.jsp</result>
 		</action>
 
 		<!-- 执行发票的状态更新 -->
-		<action name="updateselectrecept" class="action.Updateuserform"
+		<action name="updateselectrecept" class="updateuserform"
 			method="updateuserrstatus">
 			<result name="success" type="chain">showallrecepts</result>
 		</action>
 
 		<!-- 显示所有的领书单信息 -->
-		<action name="showalllingforms" class="action.Updateuserform"
+		<action name="showalllingforms" class="updateuserform"
 			method="showalllingforms">
 			<interceptor-ref name="params" />
 			<interceptor-ref name="admin" />
@@ -152,13 +152,13 @@
 		</action>
 
 		<!-- 显示选择购入的图书信息 -->
-		<action name="showselectedbook" class="action.Updateuserform"
+		<action name="showselectedbook" class="updateuserform"
 			method="showselectedbook">
 			<result name="success">/Addbook.jsp</result>
 		</action>
 
 		<!-- 显示所有的图书信息 -->
-		<action name="addbooks" class="action.Updateuserform" method="addbooks">
+		<action name="addbooks" class="updateuserform" method="addbooks">
 			<interceptor-ref name="params" />
 			<interceptor-ref name="root" />
 			<interceptor-ref name="defaultStack" />
@@ -167,13 +167,13 @@
 		</action>
 
 		<!-- 增加图书 -->
-		<action name="updatebookcount" class="action.Updateuserform"
+		<action name="updatebookcount" class="updateuserform"
 			method="updatebookcount">
 			<result name="success" type="chain">addbooks</result>
 		</action>
 
 		<!-- 购入新图书 -->
-		<action name="addnewbook" class="action.Addnewbookaction"
+		<action name="addnewbook" class="addnewbookaction"
 			method="addbook">
 			<interceptor-ref name="params" />
 			<interceptor-ref name="root" />
@@ -184,7 +184,7 @@
 		</action>
 
 		<!-- 图表显示信息 -->
-		<action name="showecharts" class="action.Updateuserform"
+		<action name="showecharts" class="updateuserform"
 			method="showecharts">
 			<interceptor-ref name="params" />
 			<interceptor-ref name="root" />
@@ -194,7 +194,7 @@
 		</action>
 
 		<!-- 显示选择购入的图书信息 -->
-		<action name="showcharbook" class="action.Updateuserform"
+		<action name="showcharbook" class="updateuserform"
 			method="showselectechart">
 			<result name="success">/Addbook.jsp</result>
 		</action>

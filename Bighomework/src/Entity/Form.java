@@ -30,8 +30,8 @@ public class Form {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="s_id")
 	@Cascade(CascadeType.ALL)
-	
 	private Student student;
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="b_id")
 	@Cascade(CascadeType.ALL)

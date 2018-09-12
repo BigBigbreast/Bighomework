@@ -6,6 +6,8 @@ import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import Dao.BookDao;
 import Dao.BookDaoimpl;
@@ -55,7 +57,8 @@ public class test {
 
 	@Test
 	public void test03(){//测试获取所有学生信息
-		StudentService bookService=new StudentServiceimpl();
+		ApplicationContext aContext=new ClassPathXmlApplicationContext("/applicationContext.xml");
+		StudentService bookService=(StudentService) aContext.getBean("studentservice");
 		List<Student> books=bookService.getStudents();
 		for (Student book : books) {
 			System.out.println(book.getSname());
@@ -161,7 +164,8 @@ public class test {
 	
 	@Test
 	public void tet13(){//测试图书查询
-		FormService for1=new FormServiceimpl();
+		ApplicationContext aContext=new ClassPathXmlApplicationContext("/applicationContext.xml");
+		FormService for1=(FormService) aContext.getBean("formservice");
 		List<Form> forms=for1.gettotaluserforms(1).getList();
 		for (Form form : forms) {
 			System.out.println(form.getId()+" "+form.getStudent().getSname()+" "+form.getC_status()+" "+form.getBook().getBookname());
@@ -172,6 +176,16 @@ public class test {
 	public void tet14(){//测试图书查询
 		FormService for1=new FormServiceimpl();
 		List<Form> forms=for1.getsnumberuserforms("201677I1250", 1).getList();
+		for (Form form : forms) {
+			System.out.println(form.getId()+" "+form.getStudent().getSname()+" "+form.getC_status()+" "+form.getBook().getBookname());
+		}		
+	}
+	
+	@Test
+	public void test15(){
+	 ApplicationContext aContext=new ClassPathXmlApplicationContext("/applicationContext.xml");
+	 FormService for1=(FormService) aContext.getBean("formservice");
+	 List<Form> forms=for1.getsnumberuserforms("201677I1250", 1).getList();
 		for (Form form : forms) {
 			System.out.println(form.getId()+" "+form.getStudent().getSname()+" "+form.getC_status()+" "+form.getBook().getBookname());
 		}		

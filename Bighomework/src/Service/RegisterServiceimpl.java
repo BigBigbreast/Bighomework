@@ -24,7 +24,7 @@ public class RegisterServiceimpl implements RegisterService {
 	@Override
 	public void register(Student student) {
 		// TODO Auto-generated method stub
-		ApplicationContext aContext=new ClassPathXmlApplicationContext("/Service/applicationContext.xml");
+		//ApplicationContext aContext=new ClassPathXmlApplicationContext("/Service/applicationContext.xml");
 		Transaction tx=HibernateUtil.getCurrSession().beginTransaction();
 		register.register(student);
 		tx.commit();

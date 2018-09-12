@@ -74,7 +74,7 @@ public class Addnewbookaction extends ActionSupport{
 		book.setBookplace(bookplace);
 		book.setBookprice(Double.parseDouble(bookprice));
 		book.setBookwriter(bookwriter);
-		ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
+		//ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
 		//BookService bookService=(BookService) aContext.getBean("addnewbook");
 		bookService.addnewbook(book);
 		return "success";

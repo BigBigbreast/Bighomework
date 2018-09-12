@@ -14,42 +14,43 @@
 						http://www.springframework.org/schema/context/spring-context-3.2.xsd
 						http://www.springframework.org/schema/tx 
 						http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
-
-	<!-- Bookserviceimpl的事例 -->
+	
 	<bean id="bookdao" class="Dao.BookDaoimpl"></bean>
-
-	<!-- FormServiceimpl的实例 -->
+	
 	<bean id="formdao" class="Dao.FormDaoimpl"></bean>
-
-	<!-- RegisterServiceimpl的实例 -->
-	<bean id="registerdao" class="Dao.Registerimpl"></bean>
-
-	<!-- StudentServiceimpl的实例 -->
-	<bean id="studentdao" class="Dao.StudentDaoimpl"></bean>
 	
-		<bean id="bookservice" class="Service.BookServiceimpl">
-			<property name="dao" >
-				<ref bean="bookdao"/>
-			</property>
-		</bean>
+	<bean id="getstudent" class="Dao.StudentDaoimpl"></bean>
 	
+	<bean id="register" class="Dao.Registerimpl"></bean>
+
+	<!-- Formserviceimpl的实例 -->
 	<bean id="formservice" class="Service.FormServiceimpl">
 		<property name="dao">
 			<ref bean="formdao"/>
 		</property>
 	</bean>
-	
-	<bean id="regiserservice" class="Service.RegisterServiceimpl">
-		<property name="register">
-			<ref bean="registerdao"/>
-		</property>
-	</bean>
+
 	
 	<bean id="studentservice" class="Service.StudentServiceimpl">
 		<property name="getstudent">
-			<ref bean="studentdao"/>
+			<ref bean="getstudent"/>
 		</property>
 	</bean>
+	
+	
+	<bean id="registerservice" class="Service.RegisterServiceimpl">
+		<property name="register">
+			<ref bean="register"/>
+		</property>
+	</bean>
+
+	<!-- Bookserviceimpl的事例 -->
+	<bean id="bookservice" class="Service.BookServiceimpl">
+		<property name="dao">
+			<ref bean="bookdao"/>
+		</property>
+	</bean>
+
 	
 	<bean id="addnewbookaction" class="action.Addnewbookaction">
 		<property name="bookService">
@@ -57,9 +58,9 @@
 		</property>
 	</bean>
 	
-	<bean id="adminformation" class="action.Adminformaction">
+	<bean id="adminnformaction" class="action.Adminformaction">
 		<property name="formService">
-			<ref bean="formservice"></ref>
+			<ref bean="formservice"/>
 		</property>
 	</bean>
 	
@@ -81,27 +82,27 @@
 		</property>
 	</bean>
 	
-	<bean id="Register" class="action.Register">
+	<bean id="registeraction" class="action.Register">
 		<property name="registerService">
-			<ref bean="regiserservice"></ref>
+			<ref bean="registerservice"></ref>
 		</property>
 		<property name="studentService">
 			<ref bean="studentservice"></ref>
 		</property>
-	</bean>
+	</bean>	
 	
 	<bean id="updateuserform" class="action.Updateuserform">
-		<property name="formService">
-			<ref bean="formservice"></ref>
-		</property>
 		<property name="bookService">
 			<ref bean="bookservice"></ref>
 		</property>
-	</bean>
-	
-	<bean id="userformsaction" class="action.Userformsaction">
 		<property name="formService">
 			<ref bean="formservice"></ref>
+		</property>
+	</bean>
+	
+	<bean id="userformaction" class="action.Userformsaction">
+		<property name="formService">
+			<ref bean="formservice"/>
 		</property>
 	</bean>
 	

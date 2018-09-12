@@ -20,7 +20,6 @@ import page.PageBeanform;
 public class FormServiceimpl implements FormService {
 	//private static ApplicationContext aContext=new ClassPathXmlApplicationContext("/Service/applicationContext.xml");
 	private FormDao dao;
-	
 
 	public FormDao getDao() {
 		return dao;

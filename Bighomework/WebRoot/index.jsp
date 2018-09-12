@@ -66,7 +66,7 @@ include file="../css/index.css"
 }
 </style>
 <body>
-
+	
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -76,7 +76,7 @@ include file="../css/index.css"
 				<span class="sr-only">郑州大学</span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
-
+ 
 			<h3>
 				<font color=white>欢迎您,<s:property
 						value="#session.student.sname" /></font>

@@ -22,7 +22,7 @@ public class Buybookaction extends ActionSupport{
 	private String id;
 	private String buybookcount;
 	
-	ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
+	//ApplicationContext aContext=new ClassPathXmlApplicationContext("/action/applicationContext.xml");
 	
 	private BookService bookService;
 	
